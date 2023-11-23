@@ -7,9 +7,7 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 
-//import com.partha.ex01workingWithSpark.dto.IntegerWithSqrtDto;
-
-import scala.Tuple2;
+import com.partha.ex01workingWithSpark.dto.IntegerWithSqrtDto;
 
 public class App05WorkingWithTuples1 {
 
@@ -24,13 +22,13 @@ public class App05WorkingWithTuples1 {
         		.setAppName("startingSpark")
         		.setMaster("local[*]");
         JavaSparkContext sc = new JavaSparkContext(conf);
-               
-        JavaRDD<Integer> inputRDD = sc.parallelize(inputData); 
-        //JavaRDD<IntegerWithSqrtDto> sqrtRDD = inputRDD.map(input -> new IntegerWithSqrtDto(input, Math.sqrt(input)));
-        //sqrtRDD.collect().forEach(item -> System.out.println("number:"+item.getNumber() + "   sqrt:"+item.getSquareRoot()));
         
-        JavaRDD<Tuple2<Integer, Double>> map = inputRDD.map(item -> new Tuple2<Integer,Double>(item,Math.sqrt(item)));
-        map.collect().forEach(tuple -> System.out.println("number:"+tuple._1() + "   sqrt:"+tuple._2()));
+
+        
+        JavaRDD<Integer> inputRDD = sc.parallelize(inputData); 
+        JavaRDD<IntegerWithSqrtDto> sqrtRDD = inputRDD.map(input -> new IntegerWithSqrtDto(input, Math.sqrt(input)));
+        
+        sqrtRDD.collect().forEach(item -> System.out.println("number:"+item.getNumber() + "   sqrt:"+item.getSquareRoot()));
         
         sc.close();
 	}
