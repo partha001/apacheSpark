@@ -43,6 +43,8 @@ public class App09WorkingWithFilters {
 		
 		//however if there is any serialization exception then we can print as below
 		filteredWords.collect().forEach(System.out::println);
+		
+		sc.close();
 	}	
 
 }
