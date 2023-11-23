@@ -24,16 +24,11 @@ public class App04CountingItemsUsingMapReduce {
         
 
         
-        JavaRDD<Integer> inputRDD = sc.parallelize(inputData); 
-        JavaRDD<Double> sqrtRDD = inputRDD.map(input -> Math.sqrt(input));
-        
-//        //this might through java.io.NotSerializableException and might work in some cases
-//        sqrtRDD.foreach(System.out::print);
-        
-        //to avoid serializable exception first collecting the values from RDD in a list
-        sqrtRDD.collect().forEach(System.out:: println);
-        
-        sc.close();
+		JavaRDD<Integer> inputRDD = sc.parallelize(inputData); 
+		JavaRDD<Long> transformRDD = inputRDD.map(input -> 1L); 
+		Long count = transformRDD.reduce((val1 , val2)-> val1 + val2);
+		System.out.println("itemCount:"+ count);
+
     
 	}
 
