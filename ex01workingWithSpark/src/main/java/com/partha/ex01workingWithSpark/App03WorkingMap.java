@@ -25,7 +25,7 @@ public class App03WorkingMap {
 
 
 		JavaRDD<Integer> inputRDD = sc.parallelize(inputData); 
-		JavaRDD<Long> transformRDD = inputRDD.map(input -> 1L);
+		JavaRDD<Long> transformRDD = inputRDD.map(input -> 1L); 
 		Long count = transformRDD.reduce((val1 , val2)-> val1 + val2);
 		System.out.println("itemCount:"+ count);
 
