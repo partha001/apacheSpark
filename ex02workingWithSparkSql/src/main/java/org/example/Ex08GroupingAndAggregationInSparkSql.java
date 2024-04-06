@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ *this program is to explore group by .w.r.t a simple usecase say we want to see record count grouped
+ * by the log level
  */
 public class Ex08GroupingAndAggregationInSparkSql {
 
