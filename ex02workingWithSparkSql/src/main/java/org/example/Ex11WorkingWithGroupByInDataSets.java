@@ -49,6 +49,9 @@ public class Ex11WorkingWithGroupByInDataSets {
         dataset2.show(100); //however it is to be notedt atht the data is not sorted by month
 
 
+        //also if we want to drop any column from our dataset then that can be done as below
+        dataset2 = dataset2.drop(col("monthnum"));
+        dataset2.show();
 
 
 
